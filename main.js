@@ -55,6 +55,15 @@ console.log("The best of 5 rounds wins the game! Good Luck!")
 console.log("Let's play a round!");
 
 
+// add in computer selection to put into game
+
+// shoot function utilizes the Math.random feature by selecting a random integer within the array index!
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+let playerSelection;
+let computerSelection; 
+
+
+// function for shooting as computer using rpsSelect
 
 
 
@@ -65,10 +74,26 @@ console.log("Let's play a round!");
 //Game loop works~!
 
 function game() {
-    let playerSelection = prompt("Enter you selection here: ");
+    playerSelection  = prompt("Enter you selection here: ").toUpperCase();
+    computerSelection = getComputerChoice();
 
-    if (playerSelection.toUpperCase() === "ROCK" || playerSelection.toUpperCase() === "PAPER" || playerSelection.toUpperCase() === "SCISSORS") {
-            console.log("You have entered the game");
+    if (playerSelection === "ROCK" || playerSelection === "PAPER" || playerSelection === "SCISSORS") {
+            function playRound(playerSelection, computerSelection) {
+                
+                if (playerSelection === computerSelection) {
+                    return result = 'Looks like it was a tie!';
+                } else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
+                    return result = 'You picked paper. You win!';
+                } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
+                    return result = 'You picked scissors. You win!';
+                } else if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
+                    return result = 'You picked rock. You win!';
+                } else {
+                    return result = `Darn. You pick ${playerSelection}, but the computer picked ${computerSelection}. You lose!`;
+                }
+                
+            }
+            console.log(playRound(playerSelection, computerSelection)); // this is where playRound() should go
         } else if (playerSelection.toUpperCase() !== "ROCK" || playerSelection.toUpperCase() !== "PAPER" || playerSelection.toUpperCase() !== "SCISSORS") {
             game();
         } else {
@@ -76,6 +101,20 @@ function game() {
     }
 }
 
+function shoot() {
+    const rpsSelect  = ['ROCK', 'PAPER', 'SCISSORS'] ;
+
+    min = Math.ceil(2);
+
+    max = Math.floor(0);
+
+    return rpsSelect[(Math.floor(Math.random() * (max - min) + min))];
+}
+
+
+function getComputerChoice() {
+    return shoot();
+}
 
 game();
 
@@ -112,7 +151,6 @@ game();
 
 let computerSelection;
 
-let playerGuess = console.log(toString(playerSelection)); // console.log(playerGuess.toUpperCase());
 
 
 const rpsSelect  = ['ROCK', 'PAPER', 'SCISSORS'] ;
