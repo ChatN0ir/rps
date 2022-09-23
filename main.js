@@ -61,14 +61,35 @@ console.log("Let's play a round!");
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 let playerSelection;
 let computerSelection; 
-
-
+let rounds = ["", "", "", "", ""];
+let point = game();
 // function for shooting as computer using rpsSelect
 
 
 
 //this is where the game loop should go
 
+for (let i = 0; i < rounds.length; i++) {
+    // console.log(game());
+    game();
+    
+    if (point === 'You picked paper. You win!' || point === 'You picked scissors. You win!' || point === 'You picked rock. You win!') {
+        // console.log("Player gets a point!");
+        console.log(rounds.push("Player Point!"));
+    } else if (point === `Darn. You pick ${playerSelection}, but the computer picked ${computerSelection}. You lose!`) {
+        // console.log("Computer gets a point!");
+        console.log(rounds.push("Computer Point!"));
+    } else {
+        console.log("No one gets a point this time");
+        
+    }
+   
+
+}
+
+
+
+console.log(`GAME OVER ---------- ${rounds} wins!`);
 // function game() {}
 
 //Game loop works~!
@@ -116,111 +137,7 @@ function getComputerChoice() {
     return shoot();
 }
 
-game();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-let computerSelection;
-
-
-
-const rpsSelect  = ['ROCK', 'PAPER', 'SCISSORS'] ;
-
-//aparently to get playRound() to work, you need to allow for in the input to always be set to a string, even if empty, henc || " "
-
-
-if (playerSelection != null && playerSelection != undefined) {
-    playerSelection = playerSelection;
-} else {
-    playerSelection = '';
-}
-
-
-// shoot function utilizes the Math.random feature by selecting a random integer within the array index!
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-
-function shoot(min, max) {
-
-    min = Math.ceil(2);
-
-    max = Math.floor(0);
-
-    return rpsSelect[(Math.floor(Math.random() * (max - min) + min))];
-
-
-}
-
-
-function getComputerChoice(computerSelection) {
-    console.log(shoot());
-}
-
-
-function compare() { 
-    console.log('Booya');
-}
-
-
-function playRound(playerGuess, computerSelection) {
-
-    if (playerGuess) {
-        
-    }
-
-    computerSelection = console.log(shoot());
-
-    if (playerGuess === 'ROCK' || playerGuess === 'PAPER' || playerGuess === 'SCISSORS') {
-        console.log(compare()); 
-    } else {
-        console.log(prompt("Please Enter either Rock, Paper, or Scissors: "));
-    }
-
-    
-
-    
-
-   
-
-}
-
-
-*/
-
-
-
-// playRound();
-
-// let computerSelection = getComputerChoice;
-
+// game();
 
 
 
