@@ -61,26 +61,28 @@ console.log("Let's play a round!");
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 let playerSelection;
 let computerSelection; 
-let rounds = ["", "", "", "", ""];
-let point = game();
+let rounds = [];
+let pointPlayer = [];
+let pointComp = [];
 // function for shooting as computer using rpsSelect
 
 
 
 //this is where the game loop should go
 
-for (let i = 0; i < rounds.length; i++) {
+for (let i = 0; i <= 100; i++) {
     // console.log(game());
     game();
     
-    if (point === 'You picked paper. You win!' || point === 'You picked scissors. You win!' || point === 'You picked rock. You win!') {
-        // console.log("Player gets a point!");
-        console.log(rounds.push("Player Point!"));
-    } else if (point === `Darn. You pick ${playerSelection}, but the computer picked ${computerSelection}. You lose!`) {
-        // console.log("Computer gets a point!");
-        console.log(rounds.push("Computer Point!"));
+   
+    if (pointPlayer.length === 3) {
+        console.log('Player Wins!');
+        break;
+    } else if (pointComp.length === 3) {
+        console.log('Computer Wins!');
+        break;
     } else {
-        console.log("No one gets a point this time");
+        game();
         
     }
    
@@ -89,7 +91,8 @@ for (let i = 0; i < rounds.length; i++) {
 
 
 
-console.log(`GAME OVER ---------- ${rounds} wins!`);
+console.log(`---------- GAME OVER ---------- `);
+console.log(`Round Breakdown: ${rounds}`)
 // function game() {}
 
 //Game loop works~!
@@ -104,12 +107,20 @@ function game() {
                 if (playerSelection === computerSelection) {
                     return result = 'Looks like it was a tie!';
                 } else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
+                    rounds.push('Player');
+                    pointPlayer.push(1);
                     return result = 'You picked paper. You win!';
                 } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
+                    rounds.push('Player');
+                    pointPlayer.push(1);
                     return result = 'You picked scissors. You win!';
                 } else if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
+                    rounds.push('Player');
+                    pointPlayer.push(1);
                     return result = 'You picked rock. You win!';
                 } else {
+                    rounds.push('Computer');
+                    pointComp.push(1);
                     return result = `Darn. You pick ${playerSelection}, but the computer picked ${computerSelection}. You lose!`;
                 }
                 
