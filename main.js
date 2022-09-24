@@ -1,78 +1,30 @@
-// This is going to be the main area that we write the rock, paper, scissors function
+// Rock Paper Scissors Game - Best of 5
 
-/* pseudocode area - 
+// Intro
 
-start best of 5 rps game
+// shoot function utilizes the Math.random feature by selecting a random integer within the array index!
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
-create player and create computer character
-
-if player or pc has not won 3 games, keep playing
-
-keep playing - 
-
-    selection either rock, paper, or scissors
-
-    computer randomly selects random rock, paper, or scissors
-
-    player makes selection - either rock, paper or scissors
-
-    else print, sorry you must select either Rock, Paper, or scissors
-
-
-
-selection results
-
-    if selection is Rock, it is greater than  scissors, and less than paper
-
-    else if selection is Paper, it is greater than rock, and less than scissors
-
-    else if selection is Scissors, it is greater than paper, and less than rock
-
-    
-
-
-compare selections
-
-    If player selection is greater than computer selection, then player wins round
-
-    else the computer wins round
-
-End game
-
-    if player wins 3 rounds, then players wins - GAME OVER
-
-    else if computer wins 3 round, then computer wins - GAME OVER
-
-    else GAME continues until one player wins three round
-
-*/
 
 console.log(" ---------- Let's Play Rock! Paper! Scissors! ---------- ");
 
 console.log("The best of 5 rounds wins the game! Good Luck!")
 
-
 console.log("Let's play a round!");
 
-
-// add in computer selection to put into game
-
-// shoot function utilizes the Math.random feature by selecting a random integer within the array index!
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 let playerSelection;
 let computerSelection; 
 let rounds = [];
 let pointPlayer = [];
 let pointComp = [];
-// function for shooting as computer using rpsSelect
-
 
 
 //this is where the game loop should go
+// if its at the top is performs first!
 
 for (let i = 0; i <= 100; i++) {
-    // console.log(game());
-    game();
+    //game(); - had game function here, but it isn't necessary for the loop. 
+    // just adds 1 unnecessary round
     
    
     if (pointPlayer.length === 3) {
@@ -85,17 +37,15 @@ for (let i = 0; i <= 100; i++) {
         game();
         
     }
-   
-
 }
-
-
 
 console.log(`---------- GAME OVER ---------- `);
 console.log(`Round Breakdown: ${rounds}`)
-// function game() {}
 
 //Game loop works~!
+
+
+// function game() {} - define the game function to play 1 round
 
 function game() {
     playerSelection  = prompt("Enter you selection here: ").toUpperCase();
@@ -133,6 +83,7 @@ function game() {
     }
 }
 
+// shoot() determines the computer's pick
 function shoot() {
     const rpsSelect  = ['ROCK', 'PAPER', 'SCISSORS'] ;
 
@@ -143,12 +94,15 @@ function shoot() {
     return rpsSelect[(Math.floor(Math.random() * (max - min) + min))];
 }
 
+// pass shoot() through getComputerChoice() to return a defined value for computerSelection
 
 function getComputerChoice() {
     return shoot();
 }
 
 // game();
+
+// That's it!
 
 
 
